@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* Exaflair palette, taken from exaflair.com */
+:root {
+  --paper: #f5f5f0;
+  --paper-2: #ecebe4;
+  --ink: #1d1410;
+  --ink-2: #242424;
+  --muted: #6b6560;
+  --line: #e2e0d8;
+  --flame: #ff752b;
+  --flame-soft: #f7ac5c;
+  --flame-wash: #fdeee3;
+  --sev-c: #a51d1d;
+  --sev-h: #d9480f;
+  --sev-m: #e8900c;
+  --sev-l: #8a8f98;
+  --sev-i: #4f7ea8;
+  --ok: #2e7a4a;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-flame: var(--flame);
+  --color-flame-soft: var(--flame-soft);
+  --color-flame-wash: var(--flame-wash);
+  --color-sev-c: var(--sev-c);
+  --color-sev-h: var(--sev-h);
+  --color-sev-m: var(--sev-m);
+  --color-sev-l: var(--sev-l);
+  --color-sev-i: var(--sev-i);
+  --color-ok: var(--ok);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-dm-serif);
+  --font-mono: var(--font-jetbrains);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--flame);
+  color: #fff;
+}
+
+/* Security cube (hero) */
+@keyframes cube-scan {
+  from {
+    transform: rotateX(90deg) translateZ(calc(var(--cube) * 0.46));
+  }
+  to {
+    transform: rotateX(90deg) translateZ(calc(var(--cube) * -0.46));
+  }
+}
+@keyframes trace-flow {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes partners-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.partners-marquee {
+  animation: partners-marquee 35s linear infinite;
+}
+.cube-scan {
+  animation: cube-scan 3.2s ease-in-out infinite alternate;
+}
+.trace-flow {
+  animation: trace-flow 1.6s linear infinite;
+}
+.ring-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ring-spin 9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .partners-marquee,
+  .cube-scan,
+  .trace-flow,
+  .ring-spin {
+    animation: none;
+  }
+}
