@@ -1,12 +1,7 @@
 const MAIN_SITE = "https://exaflair.com";
 
-/** Main-nav entries, mirroring exaflair.com. */
-export const navLinks = [
-  { label: "Why us", href: `${MAIN_SITE}/#why-us` },
-  { label: "Services", href: `${MAIN_SITE}/services` },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Join us", href: `${MAIN_SITE}/careers` },
-] as const;
+/** Main-nav entries. */
+export const navLinks = [{ label: "Audits", href: "/portfolio" }] as const;
 
 export const bookCallHref = `${MAIN_SITE}/#contact`;
 

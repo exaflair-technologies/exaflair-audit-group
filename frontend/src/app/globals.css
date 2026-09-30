@@ -17,6 +17,8 @@
   --sev-l: #8a8f98;
   --sev-i: #4f7ea8;
   --ok: #2e7a4a;
+  --night: #0c0806;
+  --coal: #0b0b0c;
 }
 
 @theme inline {
@@ -35,6 +37,8 @@
   --color-sev-l: var(--sev-l);
   --color-sev-i: var(--sev-i);
   --color-ok: var(--ok);
+  --color-night: var(--night);
+  --color-coal: var(--coal);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-dm-serif);
   --font-mono: var(--font-jetbrains);
@@ -54,7 +58,19 @@ body {
   color: #fff;
 }
 
-/* Security cube (hero) */
+/* Hero cube and grid floor */
+@keyframes floor-scroll {
+  to {
+    background-position: 0 64px;
+  }
+}
+.hero-floor {
+  background-image:
+    linear-gradient(rgba(255, 117, 43, 0.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 117, 43, 0.32) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: floor-scroll 2.4s linear infinite;
+}
 @keyframes cube-scan {
   from {
     transform: rotateX(90deg) translateZ(calc(var(--cube) * 0.46));
@@ -98,6 +114,7 @@ body {
     scroll-behavior: auto;
   }
   .partners-marquee,
+  .hero-floor,
   .cube-scan,
   .trace-flow,
   .ring-spin {

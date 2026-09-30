@@ -1,15 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import type { Severity } from "@/server/services/audits.service";
+import type { Severity } from "@/data/audits";
+import { severities } from "@/components/portfolio/severity-styles";
 
-export const severities: { key: Severity; label: string; short: string; bar: string; text: string }[] = [
-  { key: "critical", label: "Critical", short: "C", bar: "bg-sev-c", text: "text-sev-c" },
-  { key: "high", label: "High", short: "H", bar: "bg-sev-h", text: "text-sev-h" },
-  { key: "medium", label: "Medium", short: "M", bar: "bg-sev-m", text: "text-sev-m" },
-  { key: "low", label: "Low", short: "L", bar: "bg-sev-l", text: "text-sev-l" },
-  { key: "info", label: "Info", short: "I", bar: "bg-sev-i", text: "text-sev-i" },
-];
 
 /** Stacked bar of findings by severity, grown in on scroll, with a count per severity underneath. */
 export function SeverityBar({ findings, total }: { findings: Record<Severity, number>; total: number }) {

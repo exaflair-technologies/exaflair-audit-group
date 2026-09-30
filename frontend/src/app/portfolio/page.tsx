@@ -5,35 +5,22 @@ import { Reveal } from "@/components/motion/reveal";
 import { Cta } from "@/components/sections/cta";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
-import { getAuditStats, listAudits, type Audit, type AuditStats } from "@/server/services/audits.service";
+import { audits, findings, totalFindings } from "@/data/audits";
 
 export const metadata: Metadata = {
   title: "Audit portfolio — Exaflair Audits",
   description: "Smart contract audits delivered by Exaflair, with findings by severity and downloadable reports.",
 };
 
-// Re-fetch every 5 minutes. Signed report links last an hour, so they never go stale on a cached page.
-export const revalidate = 300;
+const sortedAudits = [...audits].sort((a, b) => b.auditedAt.localeCompare(a.auditedAt));
 
-async function loadPortfolio(): Promise<{ audits: Audit[]; stats: AuditStats } | null> {
-  try {
-    const [{ audits }, stats] = await Promise.all([listAudits({ limit: 100 }), getAuditStats()]);
-    return { audits, stats };
-  } catch {
-    return null;
-  }
-}
+const stats = [
+  { label: "Audits delivered", value: audits.length },
+  { label: "Findings reported", value: audits.reduce((sum, a) => sum + totalFindings(a), 0) },
+  { label: "Critical + high caught", value: audits.reduce((sum, a) => sum + findings(a).critical + findings(a).high, 0) },
+];
 
-export default async function PortfolioPage() {
-  const portfolio = await loadPortfolio();
-  const stats = [
-    { label: "Audits delivered", value: portfolio?.stats.audits ?? 0 },
-    { label: "Findings reported", value: portfolio?.stats.totalFindings ?? 0 },
-    {
-      label: "Critical + high caught",
-      value: (portfolio?.stats.bySeverity.critical ?? 0) + (portfolio?.stats.bySeverity.high ?? 0),
-    },
-  ];
+export default function PortfolioPage() {
 
   return (
     <>
@@ -73,13 +60,7 @@ export default async function PortfolioPage() {
 
         <section className="pb-24 sm:pb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
-            {portfolio ? (
-              <AuditGrid audits={portfolio.audits} />
-            ) : (
-              <p className="rounded-2xl border border-dashed border-line px-6 py-16 text-center text-ink/50">
-                Couldn&apos;t load audits right now. Please try again shortly.
-              </p>
-            )}
+            <AuditGrid audits={sortedAudits} />
           </div>
         </section>
 

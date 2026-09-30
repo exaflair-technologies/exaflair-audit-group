@@ -112,7 +112,7 @@ function PlanCard({
         animate={{ y: dark ? -6 : 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 24 }}
         className={`flex h-full flex-col rounded-2xl border p-7 transition-colors duration-300 sm:p-8 [&_*]:transition-colors [&_*]:duration-300 ${
-          dark ? "border-ink bg-ink text-[#efeae3]" : "border-line bg-white/60"
+          dark ? "border-coal bg-coal text-[#efeae3]" : "border-line bg-white/60"
         }`}
       >
         <div className="flex items-start justify-between gap-4">

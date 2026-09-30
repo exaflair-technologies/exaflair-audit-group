@@ -9,13 +9,10 @@ import { Tiers } from "@/components/sections/tiers";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 
-// Partner logos come from Supabase; re-fetch at most every 5 minutes.
-export const revalidate = 300;
-
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <Navbar overlay />
       <main className="flex-1">
         <Hero />
         <ThreatTicker />

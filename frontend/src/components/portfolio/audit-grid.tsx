@@ -1,11 +1,12 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element -- client logos come from Supabase storage */
+/* eslint-disable @next/next/no-img-element -- plain <img> keeps SVG logos crisp */
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 import { useState } from "react";
 import { TierBadge, type Tier } from "@/components/live/tier-badge";
 import { SeverityBar } from "@/components/portfolio/severity-bar";
-import type { Audit } from "@/server/services/audits.service";
+import { findings, totalFindings, type Audit } from "@/data/audits";
 
 const filters: { key: Tier | "all"; label: string }[] = [
   { key: "all", label: "All audits" },
@@ -19,8 +20,8 @@ const dateFormat = new Intl.DateTimeFormat("en-US", { month: "short", year: "num
 function ClientMark({ audit }: { audit: Audit }) {
   if (audit.clientLogoUrl) {
     return (
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-line bg-white p-1.5">
-        <img src={audit.clientLogoUrl} alt={audit.clientName} className="max-h-full max-w-full object-contain" />
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-line bg-white">
+        <img src={audit.clientLogoUrl} alt={audit.clientName} className="h-full w-full object-cover" />
       </span>
     );
   }
@@ -37,6 +38,7 @@ function ClientMark({ audit }: { audit: Audit }) {
 }
 
 function AuditCard({ audit }: { audit: Audit }) {
+  const total = totalFindings(audit);
   const meta = [audit.chain, audit.language, dateFormat.format(new Date(audit.auditedAt))].filter(Boolean);
 
   return (
@@ -47,14 +49,19 @@ function AuditCard({ audit }: { audit: Audit }) {
       exit={{ opacity: 0, scale: 0.97 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4 }}
-      className="flex flex-col rounded-2xl border border-line bg-white/60 p-6 transition-colors hover:border-flame/50 sm:p-7"
+      className="group/card relative flex flex-col rounded-2xl border border-line bg-white/60 p-6 transition-colors hover:border-flame/50 sm:p-7"
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex min-w-0 items-center gap-3">
           <ClientMark audit={audit} />
           <div className="min-w-0">
             <p className="truncate text-[13px] text-muted">{audit.clientName}</p>
-            <h3 className="truncate font-serif text-2xl leading-tight">{audit.projectName}</h3>
+            <h3 className="line-clamp-2 font-serif text-2xl leading-tight">
+              {/* stretched link: the whole card opens the audit page */}
+              <Link href={`/portfolio/${audit.slug}`} className="after:absolute after:inset-0 after:rounded-2xl">
+                {audit.projectName}
+              </Link>
+            </h3>
           </div>
         </div>
         <div className="-mt-3 -mr-2 shrink-0">
@@ -67,26 +74,17 @@ function AuditCard({ audit }: { audit: Audit }) {
       {audit.summary && <p className="mt-4 line-clamp-2 text-[15px] leading-relaxed text-ink/70">{audit.summary}</p>}
 
       <div className="mt-6 flex-1">
-        <SeverityBar findings={audit.findings} total={audit.totalFindings} />
+        <SeverityBar findings={findings(audit)} total={total} />
       </div>
 
       <div className="mt-6 flex items-center justify-between gap-4 border-t border-line pt-5">
         <span className="text-[13px] text-muted">
-          <span className="font-mono text-ink">{audit.totalFindings}</span> findings
+          <span className="font-mono text-ink">{total}</span> findings
         </span>
-        {audit.reportUrl ? (
-          <a
-            href={audit.reportUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="group flex shrink-0 items-center gap-1.5 rounded-md bg-ink-2 px-4 py-2 text-[13px] text-white transition-colors hover:bg-flame"
-          >
-            Report PDF
-            <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-          </a>
-        ) : (
-          <span className="shrink-0 text-[13px] text-ink/40">Report on request</span>
-        )}
+        <span className="flex shrink-0 items-center gap-1.5 rounded-md bg-coal px-4 py-2 text-[13px] text-white transition-colors group-hover/card:bg-flame">
+          View case study
+          <span className="transition-transform group-hover/card:translate-x-0.5">→</span>
+        </span>
       </div>
     </motion.article>
   );
@@ -132,7 +130,7 @@ export function AuditGrid({ audits }: { audits: Audit[] }) {
       <motion.div layout className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         <AnimatePresence mode="popLayout">
           {shown.map((a) => (
-            <AuditCard key={a.id} audit={a} />
+            <AuditCard key={a.slug} audit={a} />
           ))}
         </AnimatePresence>
       </motion.div>
