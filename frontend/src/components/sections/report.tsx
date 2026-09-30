@@ -14,7 +14,7 @@ const report = [
   {
     file: "contracts/Vault.sol",
     items: [
-      { sev: "H", line: 4, text: "external call before balance update — reentrancy" },
+      { sev: "H", line: 4, text: "reentrancy: external call before balance update" },
       { sev: "M", line: 15, text: "divides by zero while totalAssets == 0" },
     ],
   },
@@ -22,7 +22,7 @@ const report = [
     file: "contracts/FeeController.sol",
     items: [
       { sev: "H", line: 22, text: "setFee has no access control" },
-      { sev: "L", line: 9, text: "revert string — use a custom error" },
+      { sev: "L", line: 9, text: "revert string: use a custom error" },
     ],
   },
 ];
@@ -32,7 +32,7 @@ export function Report() {
   const count = (s: string) => all.filter((i) => i.sev === s).length;
 
   return (
-    <section id="report" className="py-24 sm:py-32">
+    <section id="report" className="py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-8 lg:px-12 lg:grid-cols-2 lg:gap-20">
         <Reveal>
           <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">What you get back</p>
@@ -89,7 +89,7 @@ export function Report() {
                           <span className="text-flame underline decoration-flame/30 underline-offset-2">
                             {f.file.split("/")[1]}:{it.line}
                           </span>{" "}
-                          — {it.text}
+                          {it.text}
                         </span>
                       </motion.li>
                     ))}

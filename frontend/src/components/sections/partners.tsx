@@ -6,7 +6,7 @@ export function Partners() {
   if (partners.length === 0) return null;
 
   return (
-    <section aria-labelledby="partners-heading" className="py-16 sm:py-20">
+    <section aria-labelledby="partners-heading" className="py-12 sm:py-14">
       <p
         id="partners-heading"
         className="mb-10 text-center font-mono text-xs tracking-[0.2em] text-muted uppercase"

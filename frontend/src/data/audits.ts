@@ -25,7 +25,6 @@ export type Audit = {
   language?: string;
   startedAt: string; // ISO date
   auditedAt: string; // ISO date the report was delivered
-  scope?: string;
   reportUrl?: string; // link to the report PDF (e.g. a Google Drive share link or /reports/x.pdf)
   clientLogoUrl?: string; // file in public/
   caseStudy: string[]; // paragraphs
@@ -58,7 +57,6 @@ export const audits: Audit[] = [
     language: "Rust · Anchor",
     startedAt: "2026-07-07",
     auditedAt: "2026-07-12",
-    scope: "programs/workchain/src",
     reportUrl: "https://drive.google.com/file/d/15HhmYbmfD01FbuWiKlXfGpTMuqUciVt3/view?usp=sharing",
     clientLogoUrl: "/partners/award.png",
     caseStudy: [
@@ -66,7 +64,7 @@ export const audits: Audit[] = [
       "Most of the risk sat in two places: how accounts were identified, and who was allowed to act. Job and proposal PDAs weren't fully seed-verified, so a client could only ever hold one job, and a crafted proposal account could front-run a real acceptance and lock the job. Whitelist checks were missing or inconsistent across freelancer and arbitrator flows, the whitelist instruction couldn't even be called, and there was no way to revoke access. The reward maths also used a logarithm approximation that drifted for high scores. The Workchain team fixed the issues and we re-checked every fix. Jobs now use unique seeds, every PDA is checked against its seeds and bump, a new admin-only blacklist instruction revokes access, and rewards use a checked log2 method.",
     ],
     timeline: [
-      { date: "Jul 7", title: "Review starts", detail: "Scope frozen: the on-chain program in programs/workchain/src." },
+      { date: "Jul 7", title: "Review starts", detail: "Scope agreed: the full on-chain Anchor program." },
       { date: "Jul 7 – 11", title: "Independent review", detail: "Researchers review the in-scope code independently and report what they find." },
       { date: "Jul 11 – 12", title: "Triage & judging", detail: "Every submission validated, duplicates merged, severities finalised." },
       { date: "Jul 12", title: "Report delivered", detail: "19 findings with impact, exploit path and a recommended fix for each." },
@@ -172,7 +170,7 @@ export const audits: Audit[] = [
       {
         id: "L-01",
         severity: "low",
-        title: "Unsafe multiplication — possible overflow",
+        title: "Unsafe multiplication: possible overflow",
         status: "resolved",
         before: "Scaling the score by one million had no overflow check, so high-score freelancers could block job approval.",
         after: "The scaling step was removed, and every multiplication and addition in the logarithm is checked.",

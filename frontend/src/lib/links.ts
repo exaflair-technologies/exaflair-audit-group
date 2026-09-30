@@ -1,9 +1,7 @@
-const MAIN_SITE = "https://exaflair.com";
-
 /** Main-nav entries. */
 export const navLinks = [{ label: "Audits", href: "/portfolio" }] as const;
 
-export const bookCallHref = `${MAIN_SITE}/#contact`;
+export const bookCallHref = "/book";
 
 export const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/exaflair-technologies" },

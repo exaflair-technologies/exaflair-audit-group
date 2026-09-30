@@ -20,7 +20,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Exaflair Audits — Smart contract security audits",
+  title: "Exaflair Audits | Smart contract security audits",
   description:
     "Smart contract audits by Exaflair. AI agents, fuzzing, invariant testing and human auditors in three tiers: Silver, Gold and Platinum.",
   icons: { icon: "/exaflair-mark.png" },

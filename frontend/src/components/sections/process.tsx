@@ -19,7 +19,7 @@ const methods: Method[] = [
     n: "01",
     title: "AI agent review",
     lead: "Multiple AI agents read your code at once, hunting for security holes and wasted gas.",
-    body: "Each agent has one specialty — security, gas optimisation, logic, access control — and they cross-check each other. Findings most agents agree on are confirmed; the rest go to a human.",
+    body: "Each agent has one specialty (security, gas optimisation, logic or access control), and they cross-check each other. Findings most agents agree on are confirmed; the rest go to a human.",
     visual: <AgentReview />,
   },
   {
@@ -29,7 +29,7 @@ const methods: Method[] = [
     body: "Done function by function, in the same five steps every time.",
     steps: [
       { title: "Read doc and function together", text: "Does the code do what the comment claims? A wrong doc is a finding on its own." },
-      { title: "Match execution to docs", text: "Walk the real control flow. Anything missing — or extra — gets flagged." },
+      { title: "Match execution to docs", text: "Walk the real control flow. Anything missing, or anything extra, gets flagged." },
       { title: "Follow the calls out", text: "Open every function it calls. Most real bugs live here: A assumes B checked it, B doesn't." },
       { title: "Check every condition", text: "The false path, the missing value, the edge case. Does it fail loudly or silently?" },
       { title: "Draw the call diagram first", text: "Half of what looks like a bug disappears once the whole chain is in view." },
@@ -40,14 +40,14 @@ const methods: Method[] = [
     n: "03",
     title: "Unit tests",
     lead: "The full flow end to end, and every function on its own.",
-    body: "A function that passes in isolation but fails as part of the flow — or the other way round — is a finding in itself.",
+    body: "A function that passes in isolation but fails as part of the flow, or the other way round, is a finding in itself.",
     visual: <TestRunner />,
   },
   {
     n: "04",
     title: "Fuzz tests",
     lead: "Every public function and endpoint, hit with randomized inputs.",
-    body: "Boundary values, malformed data, unexpected types and sizes — the inputs a reviewer wouldn't think to try. Failures are shrunk to the smallest case that breaks.",
+    body: "Boundary values, malformed data, unexpected types and sizes: the inputs a reviewer wouldn't think to try. Failures are shrunk to the smallest case that breaks.",
     visual: <FuzzStream />,
   },
   {
@@ -65,7 +65,7 @@ export function Process() {
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
   return (
-    <section id="process" className="scroll-mt-24 border-y border-line bg-white/40 py-24 sm:py-32">
+    <section id="process" className="scroll-mt-24 border-y border-line bg-white/40 py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
         <Reveal className="max-w-2xl">
           <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">How we audit</p>
@@ -73,8 +73,9 @@ export function Process() {
             Five methods, <span className="italic text-flame">in this order.</span>
           </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-ink/70">
-            Each one catches bugs the others miss. Nothing is fixed while we audit — we tag only,
-            and fixing is a separate pass.
+            Each method catches bugs the others miss, so together they cover far more than any one
+            alone. We tag every issue in place during the audit, which keeps findings clean and easy to
+            verify, then you fix them in a separate pass.
           </p>
         </Reveal>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { TierBadge, type Tier } from "@/components/live/tier-badge";
 import { Reveal } from "@/components/motion/reveal";
@@ -27,7 +27,7 @@ const plans: Plan[] = [
     includes: [
       "Multi-agent AI review, cross-checked",
       "Static analysis for known bug classes",
-      "Unit tests — full flow and every function",
+      "Unit tests for the full flow and every function",
       "Fuzz tests on every public entry point",
       "Invariant tests on critical properties",
       "Ranked H / M / L findings report",
@@ -59,7 +59,7 @@ const plans: Plan[] = [
     tagline: "Senior eyes, nothing skipped",
     reviewer: "Senior auditor leading the team",
     summary:
-      "A senior auditor leads the engagement and takes every item on the checklist in depth — from the threat model to economic attacks — and leaves you a test suite you keep.",
+      "A senior auditor leads the engagement and takes every item on the checklist in depth, from the threat model to economic attacks, and leaves you a test suite you keep.",
     includes: [
       "Everything in Gold",
       "Senior auditor leads the review",
@@ -77,9 +77,9 @@ const compare: [string, string, string, string][] = [
   ["Multi-agent AI review", "✓", "✓", "✓"],
   ["Static analysis", "✓", "✓", "✓"],
   ["Unit, fuzz and invariant tests", "✓", "✓", "✓"],
-  ["Manual line-by-line review", "—", "Junior auditor", "Senior auditor"],
+  ["Manual line-by-line review", "✕", "Junior auditor", "Senior auditor"],
   ["Threat model", "Entry points", "Standard", "Full, in depth"],
-  ["Business-logic and economic attacks", "—", "—", "✓"],
+  ["Business-logic and economic attacks", "✕", "✕", "✓"],
   ["Fix verification", "One re-check", "Every fix", "Every fix + regression tests"],
 ];
 
@@ -167,12 +167,11 @@ function PlanCard({
 }
 
 export function Tiers() {
-  const [showCompare, setShowCompare] = useState(false);
   // The highlighted card follows the pointer; Platinum is highlighted when nothing is hovered.
   const [hovered, setHovered] = useState<Tier | null>(null);
 
   return (
-    <section id="tiers" className="scroll-mt-24 py-24 sm:py-32">
+    <section id="tiers" className="scroll-mt-24 py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
         <Reveal className="max-w-2xl">
           <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Audit tiers</p>
@@ -185,64 +184,41 @@ export function Tiers() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {plans.map((p, i) => (
             <PlanCard key={p.tier} plan={p} index={i} dark={p.tier === (hovered ?? "platinum")} onHover={setHovered} />
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            onClick={() => setShowCompare((s) => !s)}
-            aria-expanded={showCompare}
-            className="flex items-center gap-2 text-[15px] text-ink/80 hover:text-ink"
-          >
-            {showCompare ? "Hide" : "Compare"} tiers side by side
-            <motion.span animate={{ rotate: showCompare ? 180 : 0 }} className="inline-block">
-              ↓
-            </motion.span>
-          </button>
-        </div>
-
-        <AnimatePresence initial={false}>
-          {showCompare && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
-            >
-              <div className="mt-8 overflow-x-auto rounded-2xl border border-line bg-white/60">
-                <table className="w-full min-w-[560px] text-left text-[14px]">
-                  <thead>
-                    <tr className="border-b border-line">
-                      <th className="p-4 font-normal text-muted">&nbsp;</th>
-                      {plans.map((p) => (
-                        <th key={p.tier} className="p-4 font-serif text-lg font-normal">
-                          {p.name}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {compare.map(([label, ...cells]) => (
-                      <tr key={label} className="border-b border-line last:border-0">
-                        <td className="p-4 text-ink/70">{label}</td>
-                        {cells.map((c, i) => (
-                          <td key={i} className={`p-4 ${c === "✓" ? "text-flame" : c === "—" ? "text-ink/30" : ""}`}>
-                            {c}
-                          </td>
-                        ))}
-                      </tr>
+        <Reveal className="mt-14">
+          <h3 className="font-serif text-2xl">Compare tiers side by side</h3>
+          <div className="mt-6 overflow-x-auto rounded-2xl border border-line bg-white/60">
+            <table className="w-full min-w-[560px] text-left text-[14px]">
+              <thead>
+                <tr className="border-b border-line">
+                  <th className="p-4 font-normal text-muted">&nbsp;</th>
+                  {plans.map((p) => (
+                    <th key={p.tier} className="p-4 font-serif text-lg font-normal">
+                      {p.name}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {compare.map(([label, ...cells]) => (
+                  <tr key={label} className="border-b border-line last:border-0">
+                    <td className="p-4 text-ink/70">{label}</td>
+                    {cells.map((c, i) => (
+                      <td key={i} className={`p-4 ${c === "✓" ? "text-flame" : c === "✕" ? "text-ink/25" : ""}`}>
+                        {c === "✕" ? <span aria-label="Not included">✕</span> : c}
+                      </td>
                     ))}
-                  </tbody>
-                </table>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

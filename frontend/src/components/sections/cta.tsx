@@ -4,8 +4,8 @@ import { bookCallHref } from "@/lib/links";
 
 export function Cta() {
   return (
-    <section className="px-4 pb-24 sm:px-8 sm:pb-32 lg:px-12">
-      <Reveal className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-coal px-6 py-20 text-center text-[#efeae3] sm:px-12 sm:py-24">
+    <section className="px-4 pb-16 sm:px-8 sm:pb-20 lg:px-12">
+      <Reveal className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-coal px-6 py-16 text-center text-[#efeae3] sm:px-12 sm:py-20">
         <BorderTrail size={160} duration={10} />
         <div
           aria-hidden

@@ -8,8 +8,8 @@ import { Navbar } from "@/components/site/navbar";
 import { audits, findings, totalFindings } from "@/data/audits";
 
 export const metadata: Metadata = {
-  title: "Audit portfolio — Exaflair Audits",
-  description: "Smart contract audits delivered by Exaflair, with findings by severity and downloadable reports.",
+  title: "Audits | Exaflair Audits",
+  description: "Smart contract audits delivered by Exaflair: what we found, how serious it was, and how each team fixed it.",
 };
 
 const sortedAudits = [...audits].sort((a, b) => b.auditedAt.localeCompare(a.auditedAt));
@@ -33,13 +33,13 @@ export default function PortfolioPage() {
           />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
             <Reveal className="max-w-3xl">
-              <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Audit portfolio</p>
+              <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Our audits</p>
               <h1 className="mt-4 font-serif text-5xl leading-[1.05] sm:text-6xl">
-                Contracts we&apos;ve <span className="italic text-flame">broken first.</span>
+                Real protocols, <span className="italic text-flame">made safer.</span>
               </h1>
               <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink/70">
-                Every audit we&apos;ve signed off, with what we found by severity. Open a report to see
-                each finding at the exact line.
+                Browse the protocols we&apos;ve reviewed. Each case study shows what we found, how serious
+                it was, and how the team fixed it before launch.
               </p>
             </Reveal>
 
@@ -58,7 +58,7 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section className="pb-24 sm:pb-32">
+        <section className="pb-16 sm:pb-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
             <AuditGrid audits={sortedAudits} />
           </div>

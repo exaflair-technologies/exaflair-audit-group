@@ -26,9 +26,9 @@ const code = [
 ];
 
 const findings: Record<number, { sev: Severity; text: string }> = {
-  2: { sev: "L", text: "revert string — a custom error is cheaper" },
-  3: { sev: "H", text: "external call before balance update — reentrancy" },
-  8: { sev: "H", text: "no access control — anyone can set the fee" },
+  2: { sev: "L", text: "revert string: a custom error is cheaper" },
+  3: { sev: "H", text: "reentrancy: external call before balance update" },
+  8: { sev: "H", text: "no access control: anyone can set the fee" },
   9: { sev: "M", text: "fee is unbounded, can exceed 10_000 bps" },
   14: { sev: "M", text: "divides by zero while totalAssets == 0" },
 };

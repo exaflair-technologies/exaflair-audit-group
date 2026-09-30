@@ -9,7 +9,7 @@ export function Footer() {
         <div className="max-w-xs">
           <Image src="/exaflair-logo.png" alt="Exaflair" width={1454} height={291} className="h-5 w-auto" />
           <p className="mt-4 text-[14px] leading-relaxed text-ink/60">
-            Smart contract audits from the Exaflair team — built by people who ship contracts, too.
+            Smart contract audits from the Exaflair team, built by people who ship contracts too.
           </p>
         </div>
 

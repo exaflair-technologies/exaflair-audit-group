@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<"/portfolio/[slug]"
   const audit = getAudit((await params).slug);
   if (!audit) return {};
   return {
-    title: `${audit.projectName} audit — Exaflair Audits`,
+    title: `${audit.projectName} audit | Exaflair Audits`,
     description: audit.summary,
   };
 }
@@ -116,7 +116,6 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
     { label: "Duration", value: `${days} days` },
     audit.chain && { label: "Chain", value: audit.chain },
     audit.language && { label: "Language", value: audit.language },
-    audit.scope && { label: "Scope", value: audit.scope, mono: true },
   ].filter(Boolean) as { label: string; value: string; mono?: boolean }[];
 
   return (
@@ -241,7 +240,7 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
         </section>
 
         {/* case study + timeline */}
-        <section className="py-20 sm:py-28">
+        <section className="py-16 sm:py-20">
           <div className="mx-auto grid max-w-7xl gap-16 px-4 sm:px-8 lg:grid-cols-[1.3fr_1fr] lg:px-12">
             <Reveal>
               <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Case study</p>
@@ -276,7 +275,7 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
         </section>
 
         {/* before / after */}
-        <section className="bg-paper-2/60 py-20 sm:py-28">
+        <section className="bg-paper-2/60 py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
             <Reveal className="max-w-2xl">
               <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Before &amp; after</p>
@@ -291,7 +290,7 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
         </section>
 
         {/* every finding */}
-        <section className="py-20 sm:py-28">
+        <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
             <Reveal className="max-w-2xl">
               <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Findings</p>

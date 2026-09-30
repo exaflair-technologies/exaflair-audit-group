@@ -46,7 +46,7 @@ const agents = [
 
 const agentFindings = [
   { kind: "security", text: "reentrancy in withdraw()", votes: 4 },
-  { kind: "gas", text: "cache balances[msg.sender] — ~2.1k gas", votes: 3 },
+  { kind: "gas", text: "cache balances[msg.sender]: saves ~2.1k gas", votes: 3 },
   { kind: "security", text: "setFee() has no access control", votes: 4 },
   { kind: "gas", text: "pack feeBps + paused into one slot", votes: 2 },
 ];
@@ -450,7 +450,7 @@ export function InvariantMonitor() {
               />
             ))}
           </div>
-          <p className="mt-2 font-mono text-[11px] text-ink/45">shares per user — the total always matches the pool</p>
+          <p className="mt-2 font-mono text-[11px] text-ink/45">shares per user: the total always matches the pool</p>
         </div>
       </Panel>
     </div>
