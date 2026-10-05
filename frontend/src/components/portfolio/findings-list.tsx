@@ -55,7 +55,7 @@ export function FindingsList({ issues }: { issues: Issue[] }) {
                 aria-expanded={isOpen}
                 className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-paper-2/60 sm:px-6"
               >
-                <span className={`w-14 shrink-0 rounded-md py-1 text-center font-mono text-[12px] ${sev.soft} ${sev.text}`}>
+                <span className={`w-14 shrink-0 rounded-md py-1 text-center font-medium text-[12px] ${sev.soft} ${sev.text}`}>
                   {issue.id}
                 </span>
                 <span className="min-w-0 flex-1 text-[15px]">{issue.title}</span>
@@ -75,11 +75,11 @@ export function FindingsList({ issues }: { issues: Issue[] }) {
                   >
                     <div className="grid gap-3 px-5 pb-5 sm:grid-cols-2 sm:px-6 sm:pl-[5.5rem]">
                       <div className="rounded-xl border border-sev-c/15 bg-sev-c/[0.04] p-4">
-                        <p className="font-mono text-[11px] tracking-[0.18em] text-sev-c uppercase">Before</p>
+                        <p className="font-medium text-[11px] tracking-[0.18em] text-sev-c uppercase">Before</p>
                         <p className="mt-2 text-[14px] leading-relaxed text-ink/75">{issue.before}</p>
                       </div>
                       <div className="rounded-xl border border-ok/15 bg-ok/[0.04] p-4">
-                        <p className="font-mono text-[11px] tracking-[0.18em] text-ok uppercase">After</p>
+                        <p className="font-medium text-[11px] tracking-[0.18em] text-ok uppercase">After</p>
                         <p className="mt-2 text-[14px] leading-relaxed text-ink/75">{issue.after}</p>
                       </div>
                       <p className={`rounded-full px-2.5 py-1 text-[12px] sm:hidden ${status.cls} w-fit`}>{status.label}</p>

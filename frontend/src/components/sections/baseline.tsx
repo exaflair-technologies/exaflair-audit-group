@@ -18,9 +18,9 @@ export function Baseline() {
     <section id="baseline" className="py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-8 lg:px-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
-          <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">In every tier</p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-            Ten things we check <span className="italic text-flame">before anything else.</span>
+          <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">In every tier</p>
+          <h2 className="mt-4 font-semibold tracking-tight text-4xl leading-tight sm:text-5xl">
+            Ten things we check <span className="text-flame">before anything else.</span>
           </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-ink/70">
             The same base layer runs on every audit, whatever the language. Tiers decide how deep
@@ -32,7 +32,7 @@ export function Baseline() {
           {checks.map((c, i) => (
             <Reveal key={c.title} delay={(i % 2) * 0.08}>
               <div className="border-t border-line pt-5">
-                <span className="font-mono text-xs text-flame">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-medium text-xs text-flame">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-2 text-[17px] font-medium">{c.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink/65">{c.text}</p>
               </div>

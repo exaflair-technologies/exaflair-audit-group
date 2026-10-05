@@ -35,9 +35,9 @@ export function Report() {
     <section id="report" className="py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-8 lg:px-12 lg:grid-cols-2 lg:gap-20">
         <Reveal>
-          <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">What you get back</p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-            Findings at the exact line. <span className="italic text-flame">No noise.</span>
+          <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">What you get back</p>
+          <h2 className="mt-4 font-semibold tracking-tight text-4xl leading-tight sm:text-5xl">
+            Findings at the exact line. <span className="text-flame">No noise.</span>
           </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-ink/70">
             One tag per issue, right where it lives in your code, plus an{" "}
@@ -48,7 +48,7 @@ export function Report() {
           <ul className="mt-10 space-y-5">
             {severities.map((s) => (
               <li key={s.key} className="flex gap-4">
-                <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md font-mono text-sm font-semibold ${s.cls}`}>
+                <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-sm font-semibold ${s.cls}`}>
                   {s.key}
                 </span>
                 <div>

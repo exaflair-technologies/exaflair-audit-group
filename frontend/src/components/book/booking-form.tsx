@@ -61,7 +61,7 @@ export function BookingForm() {
               <path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </motion.span>
-          <h2 className="mt-6 font-serif text-3xl">Message sent.</h2>
+          <h2 className="mt-6 font-semibold tracking-tight text-3xl">Message sent.</h2>
           <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-ink/65">
             Thanks for reaching out. We&apos;ll reply by email to set up a time for the call.
           </p>
@@ -71,7 +71,7 @@ export function BookingForm() {
         </motion.div>
       ) : (
         <motion.form key="form" action={formAction} initial={false} className="space-y-5" noValidate>
-          <h2 className="font-serif text-3xl">Send us a message</h2>
+          <h2 className="font-semibold tracking-tight text-3xl">Send us a message</h2>
 
           {/* spam traps: hidden field bots fill in, and the time the form was opened */}
           <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">

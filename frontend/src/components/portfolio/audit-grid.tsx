@@ -35,7 +35,7 @@ function ClientMark({ audit }: { audit: Audit }) {
     .map((w) => w[0]?.toUpperCase())
     .join("");
   return (
-    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink font-mono text-sm text-flame-soft">
+    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ink font-medium text-sm text-flame-soft">
       {initials}
     </span>
   );
@@ -60,7 +60,7 @@ function AuditCard({ audit }: { audit: Audit }) {
           <ClientMark audit={audit} />
           <div className="min-w-0">
             <p className="truncate text-[13px] text-muted">{audit.clientName}</p>
-            <h3 className="line-clamp-2 font-serif text-2xl leading-tight">
+            <h3 className="line-clamp-2 font-semibold tracking-tight text-2xl leading-tight">
               {/* stretched link: the whole card opens the audit page */}
               <Link href={`/portfolio/${audit.slug}`} className="after:absolute after:inset-0 after:rounded-2xl">
                 {audit.projectName}
@@ -73,7 +73,7 @@ function AuditCard({ audit }: { audit: Audit }) {
         </div>
       </div>
 
-      <p className="mt-3 font-mono text-[11px] tracking-wide text-ink/50 uppercase">{meta.join(" · ")}</p>
+      <p className="mt-3 font-medium text-[11px] tracking-wide text-ink/50 uppercase">{meta.join(" · ")}</p>
 
       {audit.summary && <p className="mt-4 line-clamp-2 text-[15px] leading-relaxed text-ink/70">{audit.summary}</p>}
 
@@ -83,7 +83,7 @@ function AuditCard({ audit }: { audit: Audit }) {
 
       <div className="mt-6 flex items-center justify-between gap-4 border-t border-line pt-5">
         <span className="text-[13px] text-muted">
-          <span className="font-mono text-ink">{total}</span> findings
+          <span className="font-medium text-ink">{total}</span> findings
         </span>
         <span className="flex shrink-0 items-center gap-1.5 rounded-md bg-coal px-4 py-2 text-[13px] text-white transition-colors group-hover/card:bg-flame">
           View case study

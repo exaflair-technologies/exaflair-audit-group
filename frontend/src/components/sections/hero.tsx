@@ -61,13 +61,13 @@ export function Hero() {
           Now taking smart contract audits
         </motion.p>
 
-        <h1 className="mt-5 font-serif text-[2.35rem] leading-[1.02] sm:text-[min(4.5rem,8vh)]">
+        <h1 className="mt-5 font-semibold tracking-tight text-[2.35rem] leading-[1.02] sm:text-[min(4.5rem,8vh)]">
           <motion.span {...fadeUp(0.1)} className="block">
             Break your protocol
           </motion.span>
           <motion.span
             {...fadeUp(0.2)}
-            className="block bg-gradient-to-r from-flame-soft via-flame to-[#ff4d1a] bg-clip-text pb-2 text-transparent italic"
+            className="block bg-gradient-to-r from-flame-soft via-flame to-[#ff4d1a] bg-clip-text pb-2 text-transparent"
           >
             before attackers do.
           </motion.span>

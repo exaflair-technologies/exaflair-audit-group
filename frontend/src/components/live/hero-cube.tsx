@@ -116,7 +116,7 @@ function OrbitChip({ angle, offset, item }: { angle: MotionValue<number>; offset
       className="absolute hidden sm:block"
       style={{ left, top, x: "-50%", y: "-50%", scale, opacity, zIndex }}
     >
-      <div className="flex items-center gap-2 rounded-full border border-white/15 bg-[#1a120d]/80 py-1.5 pr-3.5 pl-2.5 font-mono text-[11px] whitespace-nowrap text-white/85 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] backdrop-blur-md">
+      <div className="flex items-center gap-2 rounded-full border border-white/15 bg-[#1a120d]/80 py-1.5 pr-3.5 pl-2.5 font-medium text-[11px] whitespace-nowrap text-white/85 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] backdrop-blur-md">
         <span className={`h-1.5 w-1.5 rounded-full bg-current ${item.tone}`} />
         {item.label}
         <span className={item.tone}>{item.status}</span>

@@ -33,9 +33,9 @@ export default function PortfolioPage() {
           />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
             <Reveal className="max-w-3xl">
-              <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Our audits</p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.05] sm:text-6xl">
-                Real protocols, <span className="italic text-flame">made safer.</span>
+              <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">Our audits</p>
+              <h1 className="mt-4 font-semibold tracking-tight text-5xl leading-[1.05] sm:text-6xl">
+                Real protocols, <span className="text-flame">made safer.</span>
               </h1>
               <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink/70">
                 Browse the protocols we&apos;ve reviewed. Each case study shows what we found, how serious
@@ -48,7 +48,7 @@ export default function PortfolioPage() {
                 {stats.map((s) => (
                   <div key={s.label} className="flex flex-col-reverse">
                     <dt className="mt-2 text-[13px] text-muted sm:text-[14px]">{s.label}</dt>
-                    <dd className="font-serif text-4xl sm:text-5xl">
+                    <dd className="font-semibold tracking-tight text-4xl sm:text-5xl">
                       <CountUp to={s.value} />
                     </dd>
                   </div>

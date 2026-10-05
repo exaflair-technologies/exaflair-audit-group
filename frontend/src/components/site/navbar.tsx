@@ -42,7 +42,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             priority
             className="h-5 w-auto sm:h-6"
           />
-          <span className="rounded-full border border-flame/40 px-2 py-0.5 font-mono text-[10px] tracking-[0.18em] text-flame uppercase">
+          <span className="rounded-full border border-flame/40 px-2 py-0.5 font-medium text-[10px] tracking-[0.18em] text-flame uppercase">
             Audits
           </span>
         </Link>
@@ -98,7 +98,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             <ul className="flex flex-col gap-1 px-4 pt-2 pb-6">
               {navLinks.map((l) => (
                 <li key={l.label}>
-                  <Link href={l.href} className="block py-3 font-serif text-2xl" onClick={() => setOpen(false)}>
+                  <Link href={l.href} className="block py-3 font-semibold tracking-tight text-2xl" onClick={() => setOpen(false)}>
                     {l.label}
                   </Link>
                 </li>

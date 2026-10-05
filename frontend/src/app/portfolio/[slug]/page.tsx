@@ -60,9 +60,9 @@ function BeforeAfter({ audit }: { audit: Audit }) {
         tone === "before" ? "border-sev-c/20 bg-sev-c/[0.03]" : "border-ok/20 bg-ok/[0.03]"
       }`}
     >
-      <p className={`font-mono text-[11px] tracking-[0.2em] uppercase ${tone === "before" ? "text-sev-c" : "text-ok"}`}>{title}</p>
+      <p className={`font-medium text-[11px] tracking-[0.2em] uppercase ${tone === "before" ? "text-sev-c" : "text-ok"}`}>{title}</p>
       <p className="mt-1 text-[14px] text-muted">{caption}</p>
-      <p className="mt-6 font-serif text-6xl leading-none">
+      <p className="mt-6 font-semibold tracking-tight text-6xl leading-none">
         <CountUp to={headline} />
       </p>
       <p className="mt-2 text-[14px] text-ink/70">{headlineLabel}</p>
@@ -78,7 +78,7 @@ function BeforeAfter({ audit }: { audit: Audit }) {
                   style={{ width: `${(counts[s.key] / Math.max(...Object.values(before))) * 100}%` }}
                 />
               </div>
-              <dd className={`w-6 text-right font-mono text-[15px] ${counts[s.key] ? s.text : "text-ink/25"}`}>{counts[s.key]}</dd>
+              <dd className={`w-6 text-right font-medium text-[15px] ${counts[s.key] ? s.text : "text-ink/25"}`}>{counts[s.key]}</dd>
             </div>
           ))}
       </dl>
@@ -146,18 +146,18 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
                     />
                   )}
                   <div>
-                    <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Case study · {audit.clientName}</p>
+                    <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">Case study · {audit.clientName}</p>
                     <p className="mt-1 text-[14px] text-white/50">Security review</p>
                   </div>
                 </div>
-                <h1 className="mt-6 font-serif text-5xl leading-[1.05] sm:text-6xl">{audit.projectName}</h1>
+                <h1 className="mt-6 font-semibold tracking-tight text-5xl leading-[1.05] sm:text-6xl">{audit.projectName}</h1>
                 <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-white/65">{audit.summary}</p>
 
                 <dl className="mt-10 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-5 border-t border-white/10 pt-8 sm:grid-cols-3">
                   {meta.map((m) => (
                     <div key={m.label}>
                       <dt className="text-[12px] tracking-wide text-white/40 uppercase">{m.label}</dt>
-                      <dd className={`mt-1 text-[15px] text-white/90 ${m.mono ? "font-mono text-[14px] break-all" : ""}`}>
+                      <dd className={`mt-1 text-[15px] text-white/90 ${m.mono ? "font-medium text-[14px] break-all" : ""}`}>
                         {m.value}
                       </dd>
                     </div>
@@ -172,7 +172,7 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
                     <TierBadge tier={audit.tier} size={220} />
                   </div>
                 </div>
-                <p className="mt-4 font-serif text-2xl">{tierLabel[audit.tier]} audit</p>
+                <p className="mt-4 font-semibold tracking-tight text-2xl">{tierLabel[audit.tier]} audit</p>
                 {audit.reportUrl ? (
                   <a
                     href={audit.reportUrl}
@@ -195,8 +195,8 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
           <Reveal className="rounded-2xl border border-line bg-white p-6 shadow-[0_24px_60px_-30px_rgba(12,8,6,0.45)] sm:p-8">
             <div className="grid items-center gap-8 lg:grid-cols-[220px_1fr]">
               <div className="lg:border-r lg:border-line lg:pr-8">
-                <p className="font-mono text-[11px] tracking-[0.2em] text-muted uppercase">Total findings</p>
-                <p className="mt-2 font-serif text-7xl leading-none">
+                <p className="font-medium text-[11px] tracking-[0.2em] text-muted uppercase">Total findings</p>
+                <p className="mt-2 font-semibold tracking-tight text-7xl leading-none">
                   <CountUp to={audit.issues.length} />
                 </p>
                 <p className="mt-3 text-[14px] text-ink/60">
@@ -215,13 +215,13 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
                           <span className={`h-2 w-2 rounded-full ${s.bar}`} />
                           {s.label}
                         </p>
-                        <p className={`mt-3 font-serif text-5xl leading-none ${s.text}`}>
+                        <p className={`mt-3 font-semibold tracking-tight text-5xl leading-none ${s.text}`}>
                           <CountUp to={counts[s.key]} />
                         </p>
                         <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/80">
                           <div className={`h-full rounded-full ${s.bar}`} style={{ width: `${pct}%` }} />
                         </div>
-                        <p className="mt-2 font-mono text-[11px] text-ink/45">{pct}% of findings</p>
+                        <p className="mt-2 font-medium text-[11px] text-ink/45">{pct}% of findings</p>
                       </div>
                     );
                   })}
@@ -243,9 +243,9 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
         <section className="py-16 sm:py-20">
           <div className="mx-auto grid max-w-7xl gap-16 px-4 sm:px-8 lg:grid-cols-[1.3fr_1fr] lg:px-12">
             <Reveal>
-              <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Case study</p>
-              <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-                What we found, <span className="italic text-flame">and what changed.</span>
+              <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">Case study</p>
+              <h2 className="mt-4 font-semibold tracking-tight text-4xl leading-tight sm:text-5xl">
+                What we found, <span className="text-flame">and what changed.</span>
               </h2>
               <div className="mt-8 space-y-5 text-[17px] leading-relaxed text-ink/75">
                 {audit.caseStudy.map((p) => (
@@ -255,7 +255,7 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
             </Reveal>
 
             <Reveal delay={0.1}>
-              <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Timeline</p>
+              <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">Timeline</p>
               <ol className="relative mt-8 space-y-8 border-l border-line pl-8">
                 {audit.timeline.map((t, i) => (
                   <li key={t.title} className="relative">
@@ -264,8 +264,8 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
                         i === audit.timeline.length - 1 ? "bg-ok" : "bg-flame"
                       }`}
                     />
-                    <p className="font-mono text-[12px] tracking-wide text-muted uppercase">{t.date}</p>
-                    <p className="mt-1 font-serif text-xl">{t.title}</p>
+                    <p className="font-medium text-[12px] tracking-wide text-muted uppercase">{t.date}</p>
+                    <p className="mt-1 font-semibold tracking-tight text-xl">{t.title}</p>
                     <p className="mt-1 text-[15px] leading-relaxed text-ink/65">{t.detail}</p>
                   </li>
                 ))}
@@ -278,9 +278,9 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
         <section className="bg-paper-2/60 py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
             <Reveal className="max-w-2xl">
-              <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Before &amp; after</p>
-              <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-                From {audit.issues.length} open issues <span className="italic text-flame">to verified fixes.</span>
+              <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">Before &amp; after</p>
+              <h2 className="mt-4 font-semibold tracking-tight text-4xl leading-tight sm:text-5xl">
+                From {audit.issues.length} open issues <span className="text-flame">to verified fixes.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.1} className="mt-12">
@@ -293,8 +293,8 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
             <Reveal className="max-w-2xl">
-              <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Findings</p>
-              <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">Every issue, line by line.</h2>
+              <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">Findings</p>
+              <h2 className="mt-4 font-semibold tracking-tight text-4xl leading-tight sm:text-5xl">Every issue, line by line.</h2>
               <p className="mt-5 text-[17px] leading-relaxed text-ink/70">
                 Open a finding to see what was wrong and how the fix changed it.
               </p>

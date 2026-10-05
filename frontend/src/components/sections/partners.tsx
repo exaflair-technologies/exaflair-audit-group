@@ -9,7 +9,7 @@ export function Partners() {
     <section aria-labelledby="partners-heading" className="py-12 sm:py-14">
       <p
         id="partners-heading"
-        className="mb-10 text-center font-mono text-xs tracking-[0.2em] text-muted uppercase"
+        className="mb-10 text-center font-medium text-xs tracking-[0.2em] text-muted uppercase"
       >
         Brands we&apos;ve worked with
       </p>

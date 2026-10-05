@@ -12,8 +12,8 @@ export function Cta() {
           className="pointer-events-none absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_at_center,#000,transparent_70%)]"
         />
         <div className="relative">
-          <h2 className="font-serif text-4xl leading-tight sm:text-6xl">
-            Ship it <span className="italic text-flame">audited.</span>
+          <h2 className="font-semibold tracking-tight text-4xl leading-tight sm:text-6xl">
+            Ship it <span className="text-flame">audited.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-[17px] leading-relaxed text-white/70">
             Tell us what you&apos;re building and when it launches. We&apos;ll suggest a tier and

@@ -117,11 +117,11 @@ function PlanCard({
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className={`font-mono text-[11px] tracking-[0.2em] uppercase ${dark ? "text-flame-soft" : "text-flame"}`}>
+            <p className={`font-medium text-[11px] tracking-[0.2em] uppercase ${dark ? "text-flame-soft" : "text-flame"}`}>
               Tier {index + 1}
             </p>
-            <h3 className="mt-2 font-serif text-4xl">{plan.name}</h3>
-            <p className={`mt-1 font-serif text-lg italic ${dark ? "text-white/70" : "text-ink/70"}`}>{plan.tagline}</p>
+            <h3 className="mt-2 font-semibold tracking-tight text-4xl">{plan.name}</h3>
+            <p className={`mt-1 text-lg ${dark ? "text-white/70" : "text-ink/70"}`}>{plan.tagline}</p>
           </div>
           <div className="-mt-2 -mr-3 shrink-0">
             <TierBadge tier={plan.tier} size={104} />
@@ -174,9 +174,9 @@ export function Tiers() {
     <section id="tiers" className="scroll-mt-24 py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
         <Reveal className="max-w-2xl">
-          <p className="font-mono text-xs tracking-[0.2em] text-flame uppercase">Audit tiers</p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-            Pick the depth. <span className="italic text-flame">We cover the rest.</span>
+          <p className="font-medium text-xs tracking-[0.2em] text-flame uppercase">Audit tiers</p>
+          <h2 className="mt-4 font-semibold tracking-tight text-4xl leading-tight sm:text-5xl">
+            Pick the depth. <span className="text-flame">We cover the rest.</span>
           </h2>
           <p className="mt-5 text-[17px] leading-relaxed text-ink/70">
             Every tier runs the same automated base. What changes is who reads your code, and how
@@ -191,14 +191,14 @@ export function Tiers() {
         </div>
 
         <Reveal className="mt-14">
-          <h3 className="font-serif text-2xl">Compare tiers side by side</h3>
+          <h3 className="font-semibold tracking-tight text-2xl">Compare tiers side by side</h3>
           <div className="mt-6 overflow-x-auto rounded-2xl border border-line bg-white/60">
             <table className="w-full min-w-[560px] text-left text-[14px]">
               <thead>
                 <tr className="border-b border-line">
                   <th className="p-4 font-normal text-muted">&nbsp;</th>
                   {plans.map((p) => (
-                    <th key={p.tier} className="p-4 font-serif text-lg font-normal">
+                    <th key={p.tier} className="p-4 text-lg font-semibold tracking-tight">
                       {p.name}
                     </th>
                   ))}

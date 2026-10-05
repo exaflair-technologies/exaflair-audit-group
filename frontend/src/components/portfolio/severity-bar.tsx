@@ -33,7 +33,7 @@ export function SeverityBar({ findings, total }: { findings: Record<Severity, nu
         {severities.map((s) => (
           <div key={s.key}>
             <dt className="text-[11px] text-muted">{s.label}</dt>
-            <dd className={`mt-0.5 font-mono text-lg ${findings[s.key] ? s.text : "text-ink/25"}`}>{findings[s.key]}</dd>
+            <dd className={`mt-0.5 font-medium text-lg ${findings[s.key] ? s.text : "text-ink/25"}`}>{findings[s.key]}</dd>
           </div>
         ))}
       </dl>
