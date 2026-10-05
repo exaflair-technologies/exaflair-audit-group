@@ -237,7 +237,7 @@ export const audits: Audit[] = [
     language: "Solidity",
     startedAt: "2025-09-20",
     auditedAt: "2025-09-26",
-    reportUrl: "https://drive.google.com/file/d/150jtQzlvD1O8yD6ch7-XKOjVlr0pfWbv/view?usp=sharing",
+    reportUrl: "https://drive.google.com/file/d/1QfOSYcq9XjeUTM-IqxH-B31vFEYWEeck/view?usp=sharing",
     caseStudy: [
       "RecurXPay is a payment gateway wallet on BNB Chain that lets users pay without covering transaction fees, settling in the RecurX token. We reviewed the RecurX token, its burn fee, the vesting factory and the gateway contracts that handle gasless payments.",
       "The serious issues sat in access control, the burn fee and vesting accounting. The functions linking the token to its vesting factory were callable by anyone, the upgradeable contract could be initialised by a front-runner, and every burn reverted because transfer checks rejected the zero address. The burn fee itself was about 1,000 times higher than intended, rounded to zero on small transfers, and the vesting contract's liability counter drifted so rescue could pull out tokens still owed. The team fixed 12 of the 13 findings: the fee now uses capped basis points rounded up, burns skip transfer-only checks, initialisation is locked down, ownership sits with a multisig behind Ownable2Step, and one liability counter guards rescues. The factory access-control finding was accepted as a risk for now, with a restriction planned for a future upgrade.",
@@ -367,7 +367,7 @@ export const audits: Audit[] = [
     language: "TypeScript · Solidity",
     startedAt: "2025-12-08",
     auditedAt: "2025-12-17",
-    reportUrl: "https://drive.google.com/file/d/1oVeBnZ7pC8BSGwxtSnxffMu9BN3c0TLA/view?usp=sharing",
+    reportUrl: "https://drive.google.com/file/d/1OSwzc8T1YUNOgtID3W3e25UoFG18blHH/view?usp=sharing",
     clientLogoUrl: "/partners/loh.png",
     clientLogoFit: "contain",
     caseStudy: [
@@ -771,7 +771,7 @@ export const audits: Audit[] = [
     language: "TypeScript · Express",
     startedAt: "2026-09-28",
     auditedAt: "2026-10-05",
-    reportUrl: "https://drive.google.com/file/d/1ptic5r0tz0SvQrfe1_SIXKtK5ugs79mo/view?usp=sharing",
+    reportUrl: "https://drive.google.com/file/d/1KRoYAuwf_bKf4UMMRNRx0IzXAcSZez57/view?usp=sharing",
     clientLogoUrl: "/partners/gmx.png",
     clientLogoFit: "contain",
     caseStudy: [
