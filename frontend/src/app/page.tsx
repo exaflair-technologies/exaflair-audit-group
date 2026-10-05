@@ -1,7 +1,6 @@
 import { Baseline } from "@/components/sections/baseline";
 import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
-import { Partners } from "@/components/sections/partners";
 import { Process } from "@/components/sections/process";
 import { Report } from "@/components/sections/report";
 import { ThreatTicker } from "@/components/sections/threat-ticker";
@@ -17,7 +16,6 @@ export default function Home() {
         <Hero />
         <ThreatTicker />
         <Tiers />
-        <Partners />
         <Process />
         <Report />
         <Baseline />

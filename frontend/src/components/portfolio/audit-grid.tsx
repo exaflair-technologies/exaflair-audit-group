@@ -21,7 +21,11 @@ function ClientMark({ audit }: { audit: Audit }) {
   if (audit.clientLogoUrl) {
     return (
       <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-line bg-white">
-        <img src={audit.clientLogoUrl} alt={audit.clientName} className="h-full w-full object-cover" />
+        <img
+          src={audit.clientLogoUrl}
+          alt={audit.clientName}
+          className={`h-full w-full ${audit.clientLogoFit === "contain" ? "object-contain p-1" : "object-cover"}`}
+        />
       </span>
     );
   }

@@ -142,7 +142,7 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
                     <img
                       src={audit.clientLogoUrl}
                       alt={audit.clientName}
-                      className="h-16 w-16 rounded-2xl border border-white/10 object-cover shadow-[0_10px_40px_-10px_rgba(168,159,200,0.6)]"
+                      className={`h-16 w-16 rounded-2xl border border-white/10 shadow-[0_10px_40px_-10px_rgba(168,159,200,0.6)] ${audit.clientLogoFit === "contain" ? "bg-white object-contain p-1.5" : "object-cover"}`}
                     />
                   )}
                   <div>
