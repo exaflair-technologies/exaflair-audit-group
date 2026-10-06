@@ -13,9 +13,16 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Exaflair Audits | Smart contract security audits",
+  title: "Exaflair Audits",
   description:
     "Smart contract audits by Exaflair. AI agents, fuzzing, invariant testing and human auditors in three tiers: Silver, Gold and Platinum.",
+  icons: {
+    icon: [
+      { url: "/favicon-light.png", media: "(prefers-color-scheme: light)", type: "image/png" },
+      { url: "/favicon-dark.png", media: "(prefers-color-scheme: dark)", type: "image/png" },
+    ],
+    apple: "/favicon-light.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

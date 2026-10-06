@@ -42,7 +42,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             priority
             className="h-5 w-auto sm:h-6"
           />
-          <span className="rounded-full border border-flame/40 px-2 py-0.5 font-medium text-[10px] tracking-[0.18em] text-flame uppercase">
+          <span className="rounded-full border border-flame/40 px-2 py-0.5 font-medium text-[12px] tracking-[0.18em] text-flame uppercase">
             Audits
           </span>
         </Link>
