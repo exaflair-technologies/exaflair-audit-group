@@ -11,6 +11,7 @@ import { Cta } from "@/components/sections/cta";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { audits, findingsBySeverity, getAudit, type Audit, type IssueStatus } from "@/data/audits";
+import { getReportUrl } from "@/data/report-urls";
 
 export const dynamicParams = false;
 
@@ -109,6 +110,7 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
   const audit = getAudit((await params).slug);
   if (!audit) notFound();
 
+  const reportUrl = getReportUrl(audit.slug);
   const { label: periodLabel, days } = period(audit);
   const counts = findingsBySeverity(audit.issues);
   const meta = [
@@ -173,9 +175,9 @@ export default async function AuditPage({ params }: PageProps<"/portfolio/[slug]
                   </div>
                 </div>
                 <p className="mt-4 font-semibold tracking-tight text-2xl">{tierLabel[audit.tier]} audit</p>
-                {audit.reportUrl ? (
+                {reportUrl ? (
                   <a
-                    href={audit.reportUrl}
+                    href={reportUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="mt-5 rounded-md bg-flame px-5 py-2.5 text-[14px] text-white transition-colors hover:bg-[#ff8a4c]"

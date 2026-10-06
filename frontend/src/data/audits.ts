@@ -25,7 +25,6 @@ export type Audit = {
   language?: string;
   startedAt: string; // ISO date
   auditedAt: string; // ISO date the report was delivered
-  reportUrl?: string; // link to the report PDF (e.g. a Google Drive share link or /reports/x.pdf)
   clientLogoUrl?: string; // file in public/
   clientLogoFit?: "contain"; // show the whole logo on a white tile instead of cropping it to a square
   caseStudy: string[]; // paragraphs
@@ -58,7 +57,6 @@ export const audits: Audit[] = [
     language: "Rust · Anchor",
     startedAt: "2026-07-07",
     auditedAt: "2026-07-12",
-    reportUrl: "https://drive.google.com/file/d/15HhmYbmfD01FbuWiKlXfGpTMuqUciVt3/view?usp=sharing",
     clientLogoUrl: "/partners/award.png",
     caseStudy: [
       "Workchain is an escrow marketplace on Solana. Clients post jobs and lock payment in escrow, whitelisted freelancers bid and deliver, vetted arbitrators settle disputes, and every approved job mints AWARD reputation tokens. Over six days in July 2026 we reviewed the full on-chain Anchor program, from job creation through to arbitration and rewards.",
@@ -237,7 +235,6 @@ export const audits: Audit[] = [
     language: "Solidity",
     startedAt: "2025-09-20",
     auditedAt: "2025-09-26",
-    reportUrl: "https://drive.google.com/file/d/1QfOSYcq9XjeUTM-IqxH-B31vFEYWEeck/view?usp=sharing",
     caseStudy: [
       "RecurXPay is a payment gateway wallet on BNB Chain that lets users pay without covering transaction fees, settling in the RecurX token. We reviewed the RecurX token, its burn fee, the vesting factory and the gateway contracts that handle gasless payments.",
       "The serious issues sat in access control, the burn fee and vesting accounting. The functions linking the token to its vesting factory were callable by anyone, the upgradeable contract could be initialised by a front-runner, and every burn reverted because transfer checks rejected the zero address. The burn fee itself was about 1,000 times higher than intended, rounded to zero on small transfers, and the vesting contract's liability counter drifted so rescue could pull out tokens still owed. The team fixed 12 of the 13 findings: the fee now uses capped basis points rounded up, burns skip transfer-only checks, initialisation is locked down, ownership sits with a multisig behind Ownable2Step, and one liability counter guards rescues. The factory access-control finding was accepted as a risk for now, with a restriction planned for a future upgrade.",
@@ -367,7 +364,6 @@ export const audits: Audit[] = [
     language: "TypeScript · Solidity",
     startedAt: "2025-12-08",
     auditedAt: "2025-12-17",
-    reportUrl: "https://drive.google.com/file/d/1OSwzc8T1YUNOgtID3W3e25UoFG18blHH/view?usp=sharing",
     clientLogoUrl: "/partners/loh.png",
     clientLogoFit: "contain",
     caseStudy: [
@@ -771,7 +767,6 @@ export const audits: Audit[] = [
     language: "TypeScript · Express",
     startedAt: "2026-09-28",
     auditedAt: "2026-10-05",
-    reportUrl: "https://drive.google.com/file/d/1KRoYAuwf_bKf4UMMRNRx0IzXAcSZez57/view?usp=sharing",
     clientLogoUrl: "/partners/gmx.png",
     clientLogoFit: "contain",
     caseStudy: [
@@ -1007,7 +1002,6 @@ export const audits: Audit[] = [
     language: "Solidity",
     startedAt: "2025-03-10",
     auditedAt: "2025-03-17",
-    reportUrl: "https://drive.google.com/file/d/1usQDOPyQ4WjMKxb_O8hQYnxW9j2iVbS2/view?usp=sharing",
     caseStudy: [
       "The 1inch Limit Order Protocol lets traders create classic limit orders and a wide range of custom orders: non-ERC20 swaps, dynamic exchange rates, fill conditions and arbitrary code execution. We reviewed the protocol's settlement extensions, which take fees, enforce resolver whitelists and run Dutch-style auction curves.",
       "No critical or high issues turned up. The findings were about fills that should work but revert. FeeTaker and IntegratorFeeExtension assumed the taker asset always arrives as an ERC20, so orders that unwrap WETH to ETH couldn't be filled, and fee-on-transfer taker tokens left the contract short. Auction curves couldn't space points more than about 18 hours apart, a zero time delta caused a division-by-zero panic, orders with no whitelist always reverted, and integrator fees had no upper bound. The 1inch team resolved all six: the fee extensions handle ETH and use the actual balance received, auction parameters are validated, integrator fees are capped and orders with no whitelist fill normally.",
@@ -1081,7 +1075,6 @@ export const audits: Audit[] = [
     language: "Solidity",
     startedAt: "2025-06-05",
     auditedAt: "2025-06-11",
-    reportUrl: "https://drive.google.com/file/d/1jGPYRnBJrwqRU50atQ0jFAdHi-bJezsN/view?usp=sharing",
     caseStudy: [
       "Agora Access Control is a modular, role-based permission system for Agora's contracts. It supports several managers at once, executor calls and administration of upgradeable proxies. Over a week in June 2025 we reviewed how roles are granted, revoked and checked.",
       "The code held up well, with a single low-severity finding. Any manager can grant or revoke the manager role instantly, and the only guard stops the last manager being removed. A malicious manager who sees their removal pending can front-run it, either by revoking the other manager first or by granting the role to a fresh address they control. We recommended a timelock or two-step process for manager changes. The Agora team accepted the risk.",
@@ -1115,7 +1108,6 @@ export const audits: Audit[] = [
     language: "Solidity",
     startedAt: "2024-01-08",
     auditedAt: "2024-01-26",
-    reportUrl: "https://drive.google.com/file/d/11Q8BuP5XaOP-AWn9VqDBNtjvOvOdrOaq/view?usp=sharing",
     caseStudy: [
       "Arcadia is a non-custodial platform for on-chain asset management. Its V2 lets users build and rebalance complex portfolios in a single transaction, backed by margin accounts that borrow from tranched lending pools. Over almost three weeks in January 2024 we reviewed the lending pools, tranches, liquidations, accounts, guardians, and the asset and oracle modules.",
       "Most of the risk sat around liquidations, tranche accounting and account transfers. The high finding was a backdoor: an account's backup creditor wasn't cleared when the account changed hands, so a previous owner could drain an account the lending pool had taken over. Tranches could have their share ratio inflated through liquidation surplus, flash deposits could capture liquidation yield, a first depositor could take interest earned before anyone deposited, and accounts could be sold or borrow more mid-auction. The Arcadia team resolved ten findings, adding a long-term retire option for pools, same-block deposit and withdrawal limits, and auction guards on transfers and new debt. They accepted two risks: fee-on-transfer collateral, which they won't enable without post-transfer accounting, and interest accrual during auctions.",
@@ -1237,7 +1229,6 @@ export const audits: Audit[] = [
     language: "Solidity",
     startedAt: "2025-09-18",
     auditedAt: "2025-09-20",
-    reportUrl: "https://drive.google.com/file/d/1iEUbAXm5Vd8xavuuk49xpKLvYJmudYbt/view?usp=sharing",
     caseStudy: [
       "Aegis Vault automates converting one token into another using advanced strategies. It provides liquidity through Uniswap V3 pools via ICHI vaults, can stake its position in Berachain reward vaults, and lets users withdraw in several ways. Over three days in September we reviewed the vault core, its staking integration and the deposit and withdrawal paths.",
       "Most of the risk came from the Berachain staking integration. Anyone can delegate stake to another address in a Berachain rewards vault, and the vault didn't account for that: a single delegated wei made its exit() call revert, freezing deposits, withdrawals, rebalances and even the switch to turn staking off. The same delegated stake inflated the balances the vault reported to users and to its automation. BGT, the reward token, can only be sent by approved senders, so reward transfers could also block every core operation. The team fixed four of the five findings: the vault now withdraws only its own stake, ignores delegated stake in its accounting and skips reward transfers it isn't allowed to make. They accepted the risk of calling the Uniswap Quoter on-chain during deposits, adding a flag that skips it when all depositors are known.",
